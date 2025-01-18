@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import SearchInput from "./SearchInput";
+import SearchInput from "../../(home)/SearchInput";
 import { UserButton, OrganizationSwitcher } from "@clerk/nextjs";
-function HomeNavbar() {
 
+function HomeNavbar( ) {
   return (
     <nav className=" flex  items-center justify-between h-full  w-full">
       <div className=" flex gap-3 items-center shrink-0 pr-6">
@@ -14,9 +14,8 @@ function HomeNavbar() {
       </div>
       <SearchInput />
       <div className=" flex gap-3 items-center pl-6">
+       
         <OrganizationSwitcher
-
-        
           afterCreateOrganizationUrl="/"
           afterLeaveOrganizationUrl="/"
           afterSelectOrganizationUrl="/"
@@ -29,5 +28,3 @@ function HomeNavbar() {
 }
 
 export default HomeNavbar;
-
-

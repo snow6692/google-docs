@@ -1,9 +1,11 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import DocumentInput from "./DocumentInput";
 import MenubarComponent from "./MenubarComponent";
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
+import Avatars from "@/app/documents/[documentId]/Avatars";
 
 function Navbar() {
   return (
@@ -20,6 +22,7 @@ function Navbar() {
         </div>
       </div>
       <div className=" flex gap-3 items-center pl-6">
+        <Avatars />
         <OrganizationSwitcher
           afterCreateOrganizationUrl="/"
           afterLeaveOrganizationUrl="/"

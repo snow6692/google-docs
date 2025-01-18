@@ -83,7 +83,9 @@ export const removeById = mutation({
     const organizationId = (user.organization_id ?? undefined) as
       | string
       | undefined;
-    const isOrganizationMember = document.organizationId === organizationId;
+    const isOrganizationMember = !!(
+      document.organizationId && document.organizationId === organizationId
+    );
 
     if (!isOwner && !isOrganizationMember)
       throw new ConvexError("Unauthorized");
@@ -106,7 +108,9 @@ export const updateById = mutation({
     const organizationId = (user.organization_id ?? undefined) as
       | string
       | undefined;
-    const isOrganizationMember = document.organizationId === organizationId;
+    const isOrganizationMember = !!(
+      document.organizationId && document.organizationId === organizationId
+    );
 
     if (!isOwner && !isOrganizationMember)
       throw new ConvexError("Unauthorized");
