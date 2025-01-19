@@ -9,6 +9,8 @@ declare global {
     Storage: {
       // author: LiveObject<{ firstName: string, lastName: string }>,
       // ...
+      leftMargin: number;
+      rightMargin: number;
     };
 
     UserMeta: {

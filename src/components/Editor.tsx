@@ -22,6 +22,7 @@ import TextAlign from "@tiptap/extension-text-align";
 import { useEditorStore } from "@/store/useEditorStore";
 import { FontSizeExtension } from "@/extensions/font-size";
 import { LineHeightExtension } from "@/extensions/line-height";
+import { useStorage } from "@liveblocks/react";
 
 //table
 
@@ -30,6 +31,9 @@ import Ruler from "./ruler/Ruler";
 import { Threads } from "@/app/documents/[documentId]/Threads";
 
 function Editor() {
+  const leftMargin = useStorage((root) => root.leftMargin);
+  const rightMargin = useStorage((root) => root.rightMargin);
+
   const liveblocks = useLiveblocksExtension();
 
   const { setEditor } = useEditorStore();
@@ -61,7 +65,7 @@ function Editor() {
     },
     editorProps: {
       attributes: {
-        style: "padding-left:56px; padding-right:56px;",
+        style: `padding-left:${leftMargin ?? 56}px; padding-right:${rightMargin ?? 56}px;`,
         class:
           "focus:outline-none print:border-0 bg-white border border-[#c7c7c7] flex flex-col min-h-[1054px] w-[816px] pt-10 pb-10 cursor-text",
       },
