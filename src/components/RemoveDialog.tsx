@@ -16,6 +16,7 @@ import {
 } from "./ui/alert-dialog";
 import { Id } from "../../convex/_generated/dataModel";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface IProps {
   documentId: Id<"documents">;
@@ -24,6 +25,7 @@ interface IProps {
 function RemoveDialog({ children, documentId }: IProps) {
   const remove = useMutation(api.documents.removeById);
   const [isRemoving, setIsRemoving] = useState(false);
+  const router = useRouter();
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
@@ -50,7 +52,12 @@ function RemoveDialog({ children, documentId }: IProps) {
               setIsRemoving(true);
               remove({ id: documentId })
                 .catch(() => toast.error("Something went wrong"))
-                .then(() => toast.success("Document removed"))
+                .then(() => {
+                  toast.success("Document removed");
+
+                  setTimeout(() => router.replace("/"), 0);
+                  router.push("/");
+                })
                 .finally(() => {
                   setIsRemoving(false);
                 });
