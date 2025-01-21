@@ -28,7 +28,7 @@ import { useStorage } from "@liveblocks/react";
 
 import StarterKit from "@tiptap/starter-kit";
 import Ruler from "./ruler/Ruler";
-import { Threads } from "@/app/documents/[documentId]/Threads";
+import { Threads } from "@/components/document/Threads";
 import { LEFT_MARGIN_DEFAULT, RIGHT_MARGIN_DEFAULT } from "@/constants/margins";
 
 interface EditorProps {

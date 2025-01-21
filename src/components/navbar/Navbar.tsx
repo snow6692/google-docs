@@ -5,8 +5,8 @@ import React from "react";
 import DocumentInput from "./DocumentInput";
 import MenubarComponent from "./MenubarComponent";
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
-import Avatars from "@/app/documents/[documentId]/Avatars";
-import Inbox from "@/app/documents/[documentId]/Inbox";
+import Avatars from "../document/Avatars";
+import Inbox from "../document/Inbox";
 import { Doc } from "../../../convex/_generated/dataModel";
 
 interface NavbarProps {
@@ -15,7 +15,7 @@ interface NavbarProps {
 
 function Navbar({ data }: NavbarProps) {
   return (
-    <nav className=" flex items-center justify-between">
+    <nav className="  flex flex-col gap-y-5 md:gap-y-0 md:flex-row md:items-center md:justify-between ">
       <div className=" flex gap-2 items-center">
         <Link href="/">
           <Image src="/logo.svg" alt="Logo" width={36} height={36} />
@@ -27,7 +27,7 @@ function Navbar({ data }: NavbarProps) {
           </div>
         </div>
       </div>
-      <div className=" flex gap-3 items-center pl-6">
+      <div className=" flex gap-3 items-center pl-6 mb-4 md:mb-0">
         <Avatars />
         <Inbox />
         <OrganizationSwitcher

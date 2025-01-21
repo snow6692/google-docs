@@ -8,9 +8,12 @@ import {
 } from "@liveblocks/react/suspense";
 import { useParams } from "next/navigation";
 import Loader from "@/components/Loader";
-import { getUsers, getDocuments } from "./actions";
+import {
+  getUsers,
+  getDocuments,
+} from "../../app/documents/[documentId]/actions";
 import { toast } from "sonner";
-import { Id } from "../../../../convex/_generated/dataModel";
+import { Id } from "../../../convex/_generated/dataModel";
 
 type User = {
   id: string;

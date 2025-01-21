@@ -1,7 +1,8 @@
 "use client";
 
-const AVATAR_SIZE = 36;
+import Image from "next/image";
 
+const AVATAR_SIZE = 36;
 
 interface AvatarProps {
   src: string;
@@ -16,7 +17,7 @@ function Avatar({ name, src }: AvatarProps) {
       <div className="opacity-0 group-hover:opacity-100 absolute top-full py1 px-2  text-white text-xs rounded-lg mt-2.5 z-10 bg-black whitespace-nowrap transition-opacity">
         {name}
       </div>
-      <img alt={name} src={src} className="size-full rounded-full" />
+      <Image alt={name} src={src} fill className="size-full rounded-full" />
     </div>
   );
 }

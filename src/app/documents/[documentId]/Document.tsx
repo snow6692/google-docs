@@ -3,7 +3,7 @@ import { Preloaded, usePreloadedQuery } from "convex/react";
 import Editor from "../../../components/Editor";
 import Navbar from "../../../components/navbar/Navbar";
 import Toolbar from "../../../components/tools/Toolbar";
-import { Room } from "./Room";
+import { Room } from "../../../components/document/Room";
 import { api } from "../../../../convex/_generated/api";
 
 interface DocumentProps {
