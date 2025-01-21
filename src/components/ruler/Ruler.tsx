@@ -1,11 +1,14 @@
 import Marker from "@/components/ruler/Marker";
 import { useRef, useState } from "react";
 import { useStorage, useMutation } from "@liveblocks/react";
+import { LEFT_MARGIN_DEFAULT, RIGHT_MARGIN_DEFAULT } from "@/constants/margins";
 const markers = Array.from({ length: 83 }, (_, i) => i);
 function Ruler() {
   //Margin ruler
-  const leftMargin = useStorage((root) => root.leftMargin) ?? 56;
-  const rightMargin = useStorage((root) => root.rightMargin) ?? 56;
+  const leftMargin =
+    useStorage((root) => root.leftMargin) ?? LEFT_MARGIN_DEFAULT;
+  const rightMargin =
+    useStorage((root) => root.rightMargin) ?? RIGHT_MARGIN_DEFAULT;
   const setLeftMargin = useMutation(({ storage }, position: number) => {
     storage.set("leftMargin", position);
   }, []);
@@ -13,6 +16,7 @@ function Ruler() {
     storage.set("rightMargin", position);
   }, []);
 
+  const PAGE_WIDTH = 816;
   const [isDraggingLeft, setIsDraggingLeft] = useState(false);
   const [isDraggingRight, setIsDraggingRight] = useState(false);
 
@@ -24,7 +28,6 @@ function Ruler() {
     setIsDraggingRight(true);
   };
   const handleMouseMove = (e: React.MouseEvent) => {
-    const PAGE_WIDTH = 816;
     const MINIMUM_SPACE = 100;
     if ((isDraggingLeft || isDraggingRight) && rulerRef.current) {
       const container = rulerRef.current.querySelector("#ruler-container");
@@ -56,11 +59,11 @@ function Ruler() {
   };
 
   const handleLeftDoubleClick = () => {
-    setLeftMargin(56);
+    setLeftMargin(LEFT_MARGIN_DEFAULT);
   };
 
   const handleRightDoubleClick = () => {
-    setRightMargin(56);
+    setRightMargin(RIGHT_MARGIN_DEFAULT);
   };
 
   return (
@@ -69,7 +72,7 @@ function Ruler() {
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
-      className=" w-[816px] mx-auto h-6 border-b border-gray-300 flex items-end justify-center relative select-none  print:hidden"
+      className={` w-[816px] mx-auto h-6 border-b border-gray-300 flex items-end justify-center relative select-none  print:hidden`}
     >
       <div id="ruler-container" className="w-full h-full relative ">
         <Marker
@@ -87,9 +90,9 @@ function Ruler() {
           onDoubleClick={handleRightDoubleClick}
         />
         <div className="absolute inset-x-0 bottom-0 h-full">
-          <div className="relative h-full w-[816px]">
+          <div className={`relative h-full w-[${PAGE_WIDTH}px]`}>
             {markers.map((marker) => {
-              const position = (marker * 816) / 82;
+              const position = (marker * PAGE_WIDTH) / 82;
               return (
                 <div
                   key={marker}

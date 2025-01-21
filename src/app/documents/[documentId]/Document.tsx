@@ -10,7 +10,7 @@ interface DocumentProps {
   preloadedDocument: Preloaded<typeof api.documents.getById>;
 }
 
-export  function Document({ preloadedDocument }: DocumentProps) {
+export function Document({ preloadedDocument }: DocumentProps) {
   const document = usePreloadedQuery(preloadedDocument);
   return (
     <Room>
@@ -20,7 +20,7 @@ export  function Document({ preloadedDocument }: DocumentProps) {
           <Toolbar />
         </div>
         <div className=" pt-[114px] print:pt-0 ">
-          <Editor />
+          <Editor initialContent={document.initialContent} />
         </div>
       </div>
     </Room>

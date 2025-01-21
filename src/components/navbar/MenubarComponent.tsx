@@ -16,7 +16,6 @@ import {
   BoldIcon,
   FileIcon,
   FileJsonIcon,
-  FilePenIcon,
   FilePlusIcon,
   FileTextIcon,
   GlobeIcon,
@@ -26,7 +25,6 @@ import {
   RemoveFormattingIcon,
   StrikethroughIcon,
   TextIcon,
-  TrashIcon,
   UnderlineIcon,
   Undo2Icon,
 } from "lucide-react";
@@ -38,8 +36,7 @@ import { useMutation } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import RenameDialog from "../RenameDialog";
-import RemoveDialog from "../RemoveDialog";
+
 import { Doc } from "../../../convex/_generated/dataModel";
 
 interface IProps {
