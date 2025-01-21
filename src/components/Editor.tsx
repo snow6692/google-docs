@@ -47,6 +47,7 @@ function Editor({ initialContent }: EditorProps) {
 
   const { setEditor } = useEditorStore();
   const editor = useEditor({
+    autofocus: true,
     immediatelyRender: false,
     onCreate({ editor }) {
       setEditor(editor);
@@ -100,6 +101,7 @@ function Editor({ initialContent }: EditorProps) {
       Highlight.configure({ multicolor: true }),
 
       FontFamily,
+
       TextStyle,
       UnderLine,
       Image,
